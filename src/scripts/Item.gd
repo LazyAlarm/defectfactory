@@ -25,9 +25,9 @@ func _input(event):
 			var input : Vector2 = Input.get_vector("left","right","down","up")
 			var tween = get_tree().create_tween()
 			if Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right"):
-				tween.tween_property(cube, "global_basis", cube.global_basis.rotated(Vector3.UP, deg_to_rad(90) * roundi(input.x)).orthonormalized(), 0.1)
+				tween.tween_property(cube, "quaternion",(Basis.IDENTITY.rotated(Vector3.UP, deg_to_rad(90 * roundi(input.x))) * basis).get_rotation_quaternion(), 0.1)
 			elif Input.is_action_just_pressed("up") or Input.is_action_just_pressed("down"):
-				tween.tween_property(cube, "global_basis", cube.global_basis.rotated(Vector3.LEFT, deg_to_rad(90) * roundi(input.y)).orthonormalized(), 0.1)
+				tween.tween_property(cube, "quaternion",(Basis.IDENTITY.rotated(Vector3.LEFT, deg_to_rad(90 * roundi(input.y))) * basis).get_rotation_quaternion(), 0.1)
 			tween.set_trans(Tween.TRANS_LINEAR)
 			tween.tween_callback(_done_rotating)
 
