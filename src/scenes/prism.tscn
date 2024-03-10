@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccrhaoc6y7j0"]
+
+[ext_resource type="Script" path="res://src/scripts/prism.gd" id="1_1nue5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f2o87"]
+size = Vector3(0.262695, 0.219238, 0.224609)
+
+[sub_resource type="PrismMesh" id="PrismMesh_6j4tc"]
+
+[node name="Prism" type="Node3D"]
+script = ExtResource("1_1nue5")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0498135, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10083, 0)
+shape = SubResource("BoxShape3D_f2o87")
+
+[node name="Tilt" type="Node3D" parent="."]
+
+[node name="Mesh" type="MeshInstance3D" parent="Tilt"]
+transform = Transform3D(0.2025, 0, 0, 0, 0.2025, 0, 0, 0, 0.2025, 0, 0.0501865, 0)
+mesh = SubResource("PrismMesh_6j4tc")
+skeleton = NodePath("../..")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0491965, 0)
+aabb = AABB(-0.2, -0.2, -0.2, 0.4, 0.4, 0.4)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_screen_exited"]

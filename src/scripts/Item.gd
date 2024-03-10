@@ -10,6 +10,7 @@ func _process(delta):
 	var raydata : Dictionary = ray_from_mouse_pos(get_viewport().get_mouse_position(),0)
 	selected = raydata.size() > 0 and get_children().has(raydata["collider"])
 
+
 func ray_from_mouse_pos(mouse_pos, collision_mask):
 	var ray_start = cam.project_ray_origin(mouse_pos)
 	var ray_end = ray_start + cam.project_ray_normal(mouse_pos) * 50
