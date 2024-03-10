@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://coyv18bmus7p0"]
 
-[ext_resource type="Script" path="res://src/scripts/Item.gd" id="1_q60p0"]
+[ext_resource type="Script" path="res://src/scripts/Cube.gd" id="1_rya00"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_f0f5n"]
 size = Vector3(0.2, 0.2, 0.2)
@@ -23,8 +23,8 @@ albedo_color = Color(0.92549, 0.486275, 0, 1)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uuhhl"]
 points = PackedVector3Array(-0.1, -0.1, -0.1, 0.0999954, 0.1, 0.1, 0.0999954, 0.1, -0.1, 0.0999954, -0.1, 0.1, -0.1, 0.1, 0.1, 0.0999954, -0.1, -0.1, -0.1, 0.1, -0.1, -0.1, -0.1, 0.1)
 
-[node name="Item" type="Node3D"]
-script = ExtResource("1_q60p0")
+[node name="Cube" type="Node3D"]
+script = ExtResource("1_rya00")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_f0f5n")
