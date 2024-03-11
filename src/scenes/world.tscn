@@ -1,81 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://m3r0ebg5bbbd"]
+[gd_scene load_steps=2 format=3 uid="uid://m3r0ebg5bbbd"]
 
-[ext_resource type="Script" path="res://src/scripts/Belt.gd" id="1_wqeqr"]
-[ext_resource type="PackedScene" uid="uid://coyv18bmus7p0" path="res://src/scenes/cube.tscn" id="2_67jin"]
-[ext_resource type="PackedScene" uid="uid://dpgqwuetdc6ff" path="res://src/scenes/balloon.tscn" id="3_i1208"]
-[ext_resource type="PackedScene" uid="uid://ccrhaoc6y7j0" path="res://src/scenes/prism.tscn" id="4_brxbq"]
+[ext_resource type="PackedScene" uid="uid://bikqxymbdgv1e" path="res://src/scenes/belt.tscn" id="1_qqn4e"]
 
 [node name="World" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.1)
 fov = 50.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
-[node name="Belt" type="Node3D" parent="."]
+[node name="Belt" parent="." instance=ExtResource("1_qqn4e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
-script = ExtResource("1_wqeqr")
 
-[node name="Cube" parent="Belt" instance=ExtResource("2_67jin")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, 0)
+[node name="Belt2" parent="." instance=ExtResource("1_qqn4e")]
+item_type = 1
 
-[node name="Cube2" parent="Belt" instance=ExtResource("2_67jin")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0, 0)
-
-[node name="Cube3" parent="Belt" instance=ExtResource("2_67jin")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0)
-
-[node name="Cube4" parent="Belt" instance=ExtResource("2_67jin")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0)
-
-[node name="Cube5" parent="Belt" instance=ExtResource("2_67jin")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
-
-[node name="Cube6" parent="Belt" instance=ExtResource("2_67jin")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 0, 0)
-
-[node name="Belt2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
-script = ExtResource("1_wqeqr")
-
-[node name="Balloon" parent="Belt2" instance=ExtResource("3_i1208")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, 0)
-
-[node name="Balloon2" parent="Belt2" instance=ExtResource("3_i1208")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0, 0)
-
-[node name="Balloon3" parent="Belt2" instance=ExtResource("3_i1208")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0)
-
-[node name="Balloon4" parent="Belt2" instance=ExtResource("3_i1208")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0)
-
-[node name="Balloon5" parent="Belt2" instance=ExtResource("3_i1208")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
-
-[node name="Balloon6" parent="Belt2" instance=ExtResource("3_i1208")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 0, 0)
-
-[node name="Belt3" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
-script = ExtResource("1_wqeqr")
-
-[node name="Prism" parent="Belt3" instance=ExtResource("4_brxbq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, 0)
-
-[node name="Prism2" parent="Belt3" instance=ExtResource("4_brxbq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0, 0)
-
-[node name="Prism3" parent="Belt3" instance=ExtResource("4_brxbq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0)
-
-[node name="Prism4" parent="Belt3" instance=ExtResource("4_brxbq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0)
-
-[node name="Prism5" parent="Belt3" instance=ExtResource("4_brxbq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
-
-[node name="Prism6" parent="Belt3" instance=ExtResource("4_brxbq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 0, 0)
+[node name="Belt3" parent="." instance=ExtResource("1_qqn4e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
+item_type = 2

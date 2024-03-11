@@ -7,8 +7,6 @@ func aberrate():
 	rotation_degrees.y = randi_range(1,3) * 90
 	rotation_degrees.z = randi_range(1,3) * 90
 
-func _ready():
-	aberrate()
 
 func _input(_event):
 	if !selected or !can_rotate: return

@@ -3,8 +3,6 @@ class_name Balloon
 
 var max_scale : float = 2
 
-func _ready():
-	aberrate()
 
 
 func aberrate():

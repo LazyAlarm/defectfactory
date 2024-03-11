@@ -13,8 +13,6 @@ var speed : float = 20:
 	set(value):
 		speed = min(max_speed,value)
 
-func _ready():
-	aberrate()
 
 func aberrate():
 	var determiner : int = randi_range(0,1)
