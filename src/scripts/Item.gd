@@ -1,15 +1,16 @@
 extends Node3D
 class_name Item
 
+
 var cam : Camera3D
 var selected : bool = false
-
+var is_aberration : bool = false
 
 func _process(delta):
 	position.x += -delta * 0.3
 	var raydata : Dictionary = ray_from_mouse_pos(get_viewport().get_mouse_position(),0)
-	selected = raydata.size() > 0 and get_children().has(raydata["collider"])
-
+	selected = is_aberration and raydata.size() > 0 and get_children().has(raydata["collider"])
+	
 
 
 func ray_from_mouse_pos(mouse_pos, collision_mask):
@@ -24,6 +25,9 @@ func ray_from_mouse_pos(mouse_pos, collision_mask):
 
 func aberrate():
 	printerr(name + " has no defined aberrate method")
+
+func corrected():
+	is_aberration = false
 
 func offscreen():
 	queue_free()

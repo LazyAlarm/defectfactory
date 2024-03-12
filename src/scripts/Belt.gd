@@ -36,6 +36,7 @@ func _spawn_item(scene : PackedScene):
 	var determiner : float = randf_range(0, 100)
 	if determiner < 10:
 		item.aberrate()
+		item.is_aberration = true
 
 func _on_area_entered(area):
 	if area.get_parent() is Item:
