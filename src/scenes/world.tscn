@@ -1,8 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://m3r0ebg5bbbd"]
+[gd_scene load_steps=3 format=3 uid="uid://m3r0ebg5bbbd"]
 
 [ext_resource type="PackedScene" uid="uid://bikqxymbdgv1e" path="res://src/scenes/belt.tscn" id="1_qqn4e"]
+[ext_resource type="Script" path="res://src/scripts/Game Master.gd" id="1_wypbl"]
 
 [node name="World" type="Node3D"]
+script = ExtResource("1_wypbl")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Lives" type="Label" parent="UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Alloted Errors: 5"
+
+[node name="Points" type="Label" parent="UI"]
+layout_mode = 0
+offset_top = 18.0
+offset_right = 124.0
+offset_bottom = 41.0
+text = "Points: 0"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
@@ -21,3 +44,8 @@ item_type = 1
 [node name="Belt3" parent="." instance=ExtResource("1_qqn4e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
 item_type = 2
+
+[node name="MalfunctionTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="MalfunctionTimer" to="." method="_on_malfunction_timer_timeout"]

@@ -27,7 +27,7 @@ func _process(delta):
 	if abs(rad_to_deg(rotation.z)) < accuracy_threshold:
 		rotation.z = 0
 		if speed == max_speed:
-			corrected()
+			on_corrected()
 	else:
 		rotate_z(Input.get_axis("left","right") * -delta)
 		rotation.z = clamp(rotation.z,deg_to_rad(-max_angle),deg_to_rad(max_angle))

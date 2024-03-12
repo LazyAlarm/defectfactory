@@ -1,6 +1,7 @@
 extends Node3D
 class_name Item
 
+signal corrected
 
 var cam : Camera3D
 var selected : bool = false
@@ -26,8 +27,9 @@ func ray_from_mouse_pos(mouse_pos, collision_mask):
 func aberrate():
 	printerr(name + " has no defined aberrate method")
 
-func corrected():
+func on_corrected():
 	is_aberration = false
+	corrected.emit()
 
 func offscreen():
 	queue_free()

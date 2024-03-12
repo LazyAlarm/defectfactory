@@ -12,6 +12,7 @@ func aberrate():
 	else: scale = Vector3.ONE * randf_range(0.5, 0.8)
 
 
+
 func _process(delta):
 	super._process(delta)
 	if !selected: return
@@ -23,4 +24,4 @@ func _process(delta):
 		scale = Vector3.ONE * min_scale
 	if abs(1 - scale.x) < accuracy_threshold:
 		scale = Vector3.ONE
-		corrected()
+		on_corrected()
