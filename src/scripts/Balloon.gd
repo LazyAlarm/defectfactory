@@ -38,11 +38,11 @@ func _process(delta):
 	var input : float = Input.get_axis("down","up")
 	if input < -0.1:
 		if audio_player.stream != BALLOON_DEFLATE:
-			audio_player.pitch_scale = randi_range(0.95,1.05)
+			audio_player.pitch_scale = randf_range(0.95,1.05)
 			audio_player.stream = BALLOON_DEFLATE
 	elif input > 0.1:
 		if audio_player.stream != BALLOON_INFLATE:
-			audio_player.pitch_scale = randi_range(0.95,1.05)
+			audio_player.pitch_scale = randf_range(0.95,1.05)
 			audio_player.stream = BALLOON_INFLATE
 	if is_aberration and !audio_player.playing and abs(input) > 0.2:
 		audio_player.play()
@@ -75,7 +75,7 @@ func offscreen():
 		queue_free()
 		return
 	dead = true
-	audio_player.pitch_scale = randi_range(0.95,1.05)
+	audio_player.pitch_scale = randf_range(0.95,1.05)
 	audio_player.stream = BALLOON_POP
 	audio_player.play()
 	audio_player.finished.connect(_balloon_popped)

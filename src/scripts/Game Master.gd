@@ -79,7 +79,7 @@ func _update_spawn_time():
 
 func _defect_detected():
 	lives -= 1
-	lives_label.text = "Alloted Errors: " + str(lives)
+	lives_label.text = "Permitted Errors: " + str(lives)
 	if lives <= 0:
 		_game_over()
 
@@ -124,6 +124,7 @@ func _on_start_button_up():
 
 
 func _on_restart_button_up():
+	
 	get_tree().quit()
 	
 

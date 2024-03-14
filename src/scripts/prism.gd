@@ -27,10 +27,10 @@ func _ready():
 	animation_player.play("aPrismBob")
 
 func aberrate():
-	var determiner : int = randi_range(0,1)
+	var determiner : int = randf_range(0,1)
 	if determiner == 1: tilt.rotate_z(deg_to_rad(randf_range(20,max_angle)))
 	else: tilt.rotate_z(deg_to_rad(randf_range(-max_angle,-20)))
-	speed = randi_range(0,2)
+	speed = randf_range(0,2)
 	prism_mesh.set_surface_override_material(0,PRISM_GRAY)
 	prism_ring.set_surface_override_material(0,PRISM_GRAY)
 
@@ -45,7 +45,7 @@ func _process(delta):
 		if speed == max_speed:
 			on_corrected()
 			audio_stream.stream = PRISM_GUST
-			audio_stream.pitch_scale = randi_range(0.95,1.05)
+			audio_stream.pitch_scale = randf_range(0.95,1.05)
 			audio_stream.play()
 			prism_mesh.set_surface_override_material(0,PRISM)
 			prism_ring.set_surface_override_material(0,PRISM)
@@ -57,7 +57,7 @@ func offscreen():
 	if !is_aberration:
 		queue_free()
 		return
-	audio_stream.pitch_scale = randi_range(0.95,1.05)
+	audio_stream.pitch_scale = randf_range(0.95,1.05)
 	audio_stream.stream = PRISM_SHATTER
 	audio_stream.play()
 	audio_stream.finished.connect(death)

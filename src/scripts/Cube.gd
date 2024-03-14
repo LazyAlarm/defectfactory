@@ -28,7 +28,7 @@ func _input(_event):
 		tween.tween_property(self, "quaternion",(Basis.IDENTITY.rotated(Vector3.UP, deg_to_rad(90 * roundi(input.x))).rotated(Vector3.LEFT, deg_to_rad(90 * roundi(input.y))) *   basis).get_rotation_quaternion(), 0.06)
 		tween.set_trans(Tween.TRANS_LINEAR)
 		tween.tween_callback(_done_rotating)
-		audio_stream.pitch_scale = randi_range(0.95,1.05)
+		audio_stream.pitch_scale = randf_range(0.95,1.05)
 		audio_stream.stream = BOX_TURN
 		audio_stream.play()
 		
@@ -43,7 +43,7 @@ func offscreen():
 	if !is_aberration:
 		queue_free()
 		return
-	audio_stream.pitch_scale = randi_range(0.95,1.05)
+	audio_stream.pitch_scale = randf_range(0.95,1.05)
 	audio_stream.stream = BOX_DEATH
 	audio_stream.play()
 	audio_stream.finished.connect(death)
