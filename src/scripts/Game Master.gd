@@ -28,7 +28,7 @@ var spawn_time : float = 1.2:
 var lives : int = 5
 var points : int = 0
 var selected_belt : int = Belt_01
-var malfunction_count : int = 10
+var malfunction_count : int = 7
 var malfunction_timer_range : Vector2 = Vector2(30,60)
 
 enum {
@@ -52,6 +52,9 @@ func _ready():
 	
 
 func _start_game():
+	belt_1.clean_streak_count = 5
+	belt_2.clean_streak_count = 5
+	belt_3.clean_streak_count = 5
 	belt_1._start_game()
 	belt_2._start_game()
 	belt_3._start_game()
@@ -63,8 +66,6 @@ func _process(delta):
 	escalation_rate = lerp(escalation_rate,0.001, delta * 0.01)
 	scroll_speed = lerp(scroll_speed,1.0, delta * escalation_rate)
 	spawn_time = lerp(spawn_time,0.5,delta * escalation_rate)
-	print_debug(spawn_time)
-	print_debug(escalation_rate)
 
 func _update_scroll_speed():
 	belt_1.scroll_speed = scroll_speed

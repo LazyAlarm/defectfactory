@@ -7,6 +7,7 @@ var scroll_speed : float = 0.3
 var cam : Camera3D
 var selected : bool = false
 var is_aberration : bool = false
+var dead : bool = false
 
 func _process(delta):
 	position.x += -delta * scroll_speed

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://coyv18bmus7p0"]
+[gd_scene load_steps=8 format=3 uid="uid://coyv18bmus7p0"]
 
 [ext_resource type="Script" path="res://src/scripts/Cube.gd" id="1_rya00"]
 [ext_resource type="PackedScene" uid="uid://b36b4apd4ry6x" path="res://src/mesh/Cube.glb" id="2_5kq0a"]
 [ext_resource type="Material" uid="uid://7hdamc528t4l" path="res://src/mesh/materials/cube.tres" id="3_jki5o"]
 [ext_resource type="Material" uid="uid://bjyv07otcrcya" path="res://src/mesh/materials/balloon_yellow.tres" id="4_r735k"]
+[ext_resource type="AudioStream" uid="uid://bedvhtif2sg8v" path="res://src/sound/box_turn.wav" id="5_i3oau"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ab60s"]
 size = Vector3(0.3, 0.3, 0.3)
@@ -33,6 +34,10 @@ surface_material_override/0 = ExtResource("3_jki5o")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 mesh = SubResource("CylinderMesh_o01m5")
 surface_material_override/0 = ExtResource("4_r735k")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_i3oau")
+max_polyphony = 4
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_screen_exited"]
 

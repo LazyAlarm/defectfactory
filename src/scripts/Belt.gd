@@ -61,7 +61,7 @@ func _spawn_item(scene : PackedScene):
 	item.cam = %Camera3D
 	item.scroll_speed = scroll_speed
 	var determiner : float = randf_range(0, 100)
-	if (determiner < 10 and clean_streak_count <= 0) or major_mal_count > 0:
+	if (determiner < 15 and clean_streak_count <= 0) or major_mal_count > 0:
 		item.aberrate()
 		item.is_aberration = true
 		item.corrected.connect(_on_corrected)

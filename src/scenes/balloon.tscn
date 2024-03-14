@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpgqwuetdc6ff"]
+[gd_scene load_steps=7 format=3 uid="uid://dpgqwuetdc6ff"]
 
 [ext_resource type="Script" path="res://src/scripts/balloon.gd" id="1_ryllj"]
 [ext_resource type="PackedScene" uid="uid://bqkkuy11stn4l" path="res://src/mesh/Balloon.glb" id="2_iu7x2"]
 [ext_resource type="Material" uid="uid://c4usxrpdggsby" path="res://src/mesh/materials/balloon_red.tres" id="3_kejyc"]
+[ext_resource type="AudioStream" uid="uid://dln842mhh4mdr" path="res://src/sound/balloon_inflate.mp3" id="4_by1jr"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_68gpp"]
 radius = 0.184473
@@ -37,6 +38,11 @@ surface_material_override/0 = ExtResource("3_kejyc")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 mesh = SubResource("CylinderMesh_6a5ma")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_by1jr")
+volume_db = -5.0
+unit_size = 76.31
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_screen_exited"]
 

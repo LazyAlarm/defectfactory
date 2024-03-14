@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccrhaoc6y7j0"]
+[gd_scene load_steps=10 format=3 uid="uid://ccrhaoc6y7j0"]
 
 [ext_resource type="Script" path="res://src/scripts/prism.gd" id="1_1nue5"]
 [ext_resource type="PackedScene" uid="uid://cf3rgmis615by" path="res://src/mesh/Prism.glb" id="2_ay8cb"]
 [ext_resource type="Material" uid="uid://c6fkfowkm6g08" path="res://src/mesh/materials/prism.tres" id="3_qq2g6"]
+[ext_resource type="AudioStream" uid="uid://813lqnmedaev" path="res://src/sound/prism_gust.wav" id="4_f141i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f2o87"]
 size = Vector3(0.262695, 0.219238, 0.224609)
@@ -192,6 +193,12 @@ mesh = SubResource("BoxMesh_07ihf")
 libraries = {
 "": SubResource("AnimationLibrary_sv605")
 }
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_f141i")
+volume_db = -10.0
+attenuation_filter_cutoff_hz = 20500.0
+attenuation_filter_db = -80.0
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_screen_exited"]
 

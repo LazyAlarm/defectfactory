@@ -4,6 +4,11 @@
 [ext_resource type="Script" path="res://src/scripts/Game Master.gd" id="1_wypbl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s53jm"]
+sky_top_color = Color(0.301961, 0.356863, 0.54902, 1)
+sky_horizon_color = Color(0.0705882, 0.129412, 0.145098, 1)
+ground_bottom_color = Color(0.0941176, 0.0666667, 0.113725, 1)
+ground_horizon_color = Color(0.0666667, 0.0862745, 0.054902, 1)
+sun_curve = 0.0724452
 
 [sub_resource type="Sky" id="Sky_lf13y"]
 sky_material = SubResource("ProceduralSkyMaterial_s53jm")
@@ -11,6 +16,7 @@ sky_material = SubResource("ProceduralSkyMaterial_s53jm")
 [sub_resource type="Environment" id="Environment_2i5fw"]
 background_mode = 2
 sky = SubResource("Sky_lf13y")
+glow_enabled = true
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_wypbl")
