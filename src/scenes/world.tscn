@@ -19,6 +19,7 @@ script = ExtResource("1_wypbl")
 environment = SubResource("Environment_2i5fw")
 
 [node name="UI" type="Control" parent="."]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,6 +39,108 @@ offset_top = 18.0
 offset_right = 124.0
 offset_bottom = 41.0
 text = "Points: 0"
+
+[node name="Title Menu" type="Panel" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="UI/Title Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -15.5
+offset_right = 23.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+
+[node name="Quit" type="Button" parent="UI/Title Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = 16.0
+offset_right = 23.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+
+[node name="Game Over" type="Panel" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Restart" type="Button" parent="UI/Game Over"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -15.5
+offset_right = 23.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+
+[node name="Pause" type="Panel" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resume" type="Button" parent="UI/Pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -15.5
+offset_right = 23.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Resume"
+
+[node name="Quit" type="Button" parent="UI/Pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = 16.0
+offset_right = 23.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
@@ -61,4 +164,15 @@ item_type = 2
 [node name="MalfunctionTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.95881, 0.284049, 0, -0.284049, 0.95881, 0, 0.818682, 4.01761)
+light_energy = 4.66
+spot_range = 9.2784
+spot_angle = 34.19
+
+[connection signal="button_up" from="UI/Title Menu/Start" to="." method="_on_start_button_up"]
+[connection signal="button_up" from="UI/Title Menu/Quit" to="." method="_on_quit_button_up"]
+[connection signal="button_up" from="UI/Game Over/Restart" to="." method="_on_restart_button_up"]
+[connection signal="button_up" from="UI/Pause/Resume" to="." method="_on_resume_button_up"]
+[connection signal="button_up" from="UI/Pause/Quit" to="." method="_on_quit_button_up"]
 [connection signal="timeout" from="MalfunctionTimer" to="." method="_on_malfunction_timer_timeout"]

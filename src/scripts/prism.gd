@@ -7,8 +7,11 @@ class_name Prism
 @onready var prism_ring = $"Tilt/Mesh/Prism/Prism Ring"
 @onready var animation_player = $AnimationPlayer
 
+
+
 const PRISM : StandardMaterial3D = preload("res://src/mesh/materials/prism.tres")
 const PRISM_GRAY : StandardMaterial3D = preload("res://src/mesh/materials/prism_gray.tres")
+
 
 var max_speed : float = 10
 var max_angle : float = 80
@@ -34,7 +37,7 @@ func _process(delta):
 	mesh.rotate_y(delta * -speed)
 	animation_player.speed_scale = speed / max_speed
 	if !selected: return
-	speed += Input.get_action_strength("up") * delta * 7
+	speed += Input.get_action_strength("up") * delta * 14
 	if abs(rad_to_deg(tilt.rotation.z)) < accuracy_threshold:
 		tilt.rotation.z = 0
 		if speed == max_speed:
@@ -42,6 +45,6 @@ func _process(delta):
 			prism_mesh.set_surface_override_material(0,PRISM)
 			prism_ring.set_surface_override_material(0,PRISM)
 	else:
-		tilt.rotate_z(Input.get_axis("left","right") * -delta)
+		tilt.rotate_z(Input.get_axis("left","right") * -delta * 3)
 		tilt.rotation.z = clamp(tilt.rotation.z,deg_to_rad(-max_angle),deg_to_rad(max_angle))
 

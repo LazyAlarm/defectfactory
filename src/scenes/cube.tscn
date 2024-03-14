@@ -1,69 +1,39 @@
-[gd_scene load_steps=9 format=3 uid="uid://coyv18bmus7p0"]
+[gd_scene load_steps=7 format=3 uid="uid://coyv18bmus7p0"]
 
 [ext_resource type="Script" path="res://src/scripts/Cube.gd" id="1_rya00"]
+[ext_resource type="PackedScene" uid="uid://b36b4apd4ry6x" path="res://src/mesh/Cube.glb" id="2_5kq0a"]
+[ext_resource type="Material" uid="uid://7hdamc528t4l" path="res://src/mesh/materials/cube.tres" id="3_jki5o"]
+[ext_resource type="Material" uid="uid://bjyv07otcrcya" path="res://src/mesh/materials/balloon_yellow.tres" id="4_r735k"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_f0f5n"]
-size = Vector3(0.2, 0.2, 0.2)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ab60s"]
+size = Vector3(0.3, 0.3, 0.3)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3so23"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1pp1b"]
-albedo_color = Color(0, 1, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fca5l"]
-albedo_color = Color(0, 0, 1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_to47r"]
-albedo_color = Color(1, 1, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tlv6g"]
-albedo_color = Color(0.92549, 0.486275, 0, 1)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uuhhl"]
-points = PackedVector3Array(-0.1, -0.1, -0.1, 0.0999954, 0.1, 0.1, 0.0999954, 0.1, -0.1, 0.0999954, -0.1, 0.1, -0.1, 0.1, 0.1, 0.0999954, -0.1, -0.1, -0.1, 0.1, -0.1, -0.1, -0.1, 0.1)
+[sub_resource type="CylinderMesh" id="CylinderMesh_o01m5"]
+top_radius = 0.0
+bottom_radius = 0.135
+height = 0.1
 
 [node name="Cube" type="Node3D"]
 script = ExtResource("1_rya00")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_f0f5n")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
-mesh = SubResource("BoxMesh_f0f5n")
-surface_material_override/0 = SubResource("StandardMaterial3D_3so23")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)
-mesh = SubResource("BoxMesh_f0f5n")
-surface_material_override/0 = SubResource("StandardMaterial3D_1pp1b")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0, 0)
-mesh = SubResource("BoxMesh_f0f5n")
-surface_material_override/0 = SubResource("StandardMaterial3D_fca5l")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
-mesh = SubResource("BoxMesh_f0f5n")
-surface_material_override/0 = SubResource("StandardMaterial3D_to47r")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0, 0)
-mesh = SubResource("BoxMesh_f0f5n")
-surface_material_override/0 = SubResource("StandardMaterial3D_tlv6g")
-
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
-mesh = SubResource("BoxMesh_f0f5n")
-
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("ConvexPolygonShape3D_uuhhl")
+shape = SubResource("BoxShape3D_ab60s")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
 aabb = AABB(-0.1, -0.1, -0.1, 0.2, 0.2, 0.2)
 
+[node name="Cube2" parent="." instance=ExtResource("2_5kq0a")]
+
+[node name="Cube" parent="Cube2" index="0"]
+surface_material_override/0 = ExtResource("3_jki5o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cube2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+mesh = SubResource("CylinderMesh_o01m5")
+surface_material_override/0 = ExtResource("4_r735k")
+
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_screen_exited"]
+
+[editable path="Cube2"]

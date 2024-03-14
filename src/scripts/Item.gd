@@ -3,16 +3,19 @@ class_name Item
 
 signal corrected
 
+var scroll_speed : float = 0.3
 var cam : Camera3D
 var selected : bool = false
 var is_aberration : bool = false
 
 func _process(delta):
-	position.x += -delta * 0.3
+	position.x += -delta * scroll_speed
 	var raydata : Dictionary = ray_from_mouse_pos(get_viewport().get_mouse_position(),0)
 	selected = is_aberration and raydata.size() > 0 and get_children().has(raydata["collider"])
 	
 
+func update_speed(new_speed : float):
+	scroll_speed = new_speed
 
 func ray_from_mouse_pos(mouse_pos, collision_mask):
 	var ray_start = cam.project_ray_origin(mouse_pos)
