@@ -1,10 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://m3r0ebg5bbbd"]
+[gd_scene load_steps=6 format=3 uid="uid://m3r0ebg5bbbd"]
 
 [ext_resource type="PackedScene" uid="uid://bikqxymbdgv1e" path="res://src/scenes/belt.tscn" id="1_qqn4e"]
 [ext_resource type="Script" path="res://src/scripts/Game Master.gd" id="1_wypbl"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s53jm"]
+
+[sub_resource type="Sky" id="Sky_lf13y"]
+sky_material = SubResource("ProceduralSkyMaterial_s53jm")
+
+[sub_resource type="Environment" id="Environment_2i5fw"]
+background_mode = 2
+sky = SubResource("Sky_lf13y")
+
 [node name="World" type="Node3D"]
 script = ExtResource("1_wypbl")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2i5fw")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c6fkfowkm6g08"]
+
+[resource]
+blend_mode = 1
+cull_mode = 2
+depth_draw_mode = 1
+shading_mode = 2
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true

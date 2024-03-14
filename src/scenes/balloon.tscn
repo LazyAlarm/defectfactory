@@ -1,13 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpgqwuetdc6ff"]
+[gd_scene load_steps=6 format=3 uid="uid://dpgqwuetdc6ff"]
 
 [ext_resource type="Script" path="res://src/scripts/balloon.gd" id="1_ryllj"]
+[ext_resource type="PackedScene" uid="uid://bqkkuy11stn4l" path="res://src/mesh/Balloon.glb" id="2_iu7x2"]
+[ext_resource type="Material" uid="uid://c4usxrpdggsby" path="res://src/mesh/materials/balloon_red.tres" id="3_kejyc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_68gpp"]
 radius = 0.13
-
-[sub_resource type="SphereMesh" id="SphereMesh_cxcav"]
-radius = 0.1
-height = 0.2
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_6a5ma"]
 top_radius = 0.01
@@ -31,18 +29,15 @@ shape = SubResource("SphereShape3D_68gpp")
 [node name="ScalePivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ScalePivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-mesh = SubResource("SphereMesh_cxcav")
-skeleton = NodePath("../..")
+[node name="Balloon2" parent="ScalePivot" instance=ExtResource("2_iu7x2")]
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="ScalePivot"]
-transform = Transform3D(1.37581, 0, 0, 0, 1.37581, 0, 0, 0, 1.37581, 0, 0.195374, 0)
-mesh = SubResource("SphereMesh_cxcav")
-skeleton = NodePath("../..")
+[node name="Balloon" parent="ScalePivot/Balloon2" index="0"]
+surface_material_override/0 = ExtResource("3_kejyc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 mesh = SubResource("CylinderMesh_6a5ma")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_screen_exited"]
+
+[editable path="ScalePivot/Balloon2"]

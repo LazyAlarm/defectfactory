@@ -1,14 +1,160 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccrhaoc6y7j0"]
+[gd_scene load_steps=9 format=3 uid="uid://ccrhaoc6y7j0"]
 
 [ext_resource type="Script" path="res://src/scripts/prism.gd" id="1_1nue5"]
+[ext_resource type="PackedScene" uid="uid://cf3rgmis615by" path="res://src/mesh/Prism.glb" id="2_ay8cb"]
+[ext_resource type="Material" uid="uid://c6fkfowkm6g08" path="res://src/mesh/materials/prism.tres" id="3_qq2g6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f2o87"]
 size = Vector3(0.262695, 0.219238, 0.224609)
 
-[sub_resource type="PrismMesh" id="PrismMesh_6j4tc"]
-
 [sub_resource type="BoxMesh" id="BoxMesh_07ihf"]
 size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="Animation" id="Animation_rtj08"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tilt/Mesh/Prism:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tilt/Mesh/Prism:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.02, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tilt/Mesh/Prism:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tilt/Mesh/Prism/Prism Ring:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tilt/Mesh/Prism/Prism Ring:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.163, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tilt/Mesh/Prism/Prism Ring:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_kcmop"]
+resource_name = "aPrismBob"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tilt/Mesh/Prism:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tilt/Mesh/Prism:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.02, -0.25, 0, 0.25, 0, 0.02, -0.25, 0, 0.25, 0, -0.02, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tilt/Mesh/Prism:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tilt/Mesh/Prism/Prism Ring:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tilt/Mesh/Prism/Prism Ring:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.153, -0.25, 0, 0.25, 0, 0.133, -0.25, 0, 0.25, 0, 0.153, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tilt/Mesh/Prism/Prism Ring:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sv605"]
+_data = {
+"RESET": SubResource("Animation_rtj08"),
+"aPrismBob": SubResource("Animation_kcmop")
+}
 
 [node name="Prism" type="Node3D"]
 script = ExtResource("1_1nue5")
@@ -23,10 +169,16 @@ shape = SubResource("BoxShape3D_f2o87")
 [node name="Tilt" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 
-[node name="Mesh" type="MeshInstance3D" parent="Tilt"]
-transform = Transform3D(0.2025, 0, 0, 0, 0.2025, 0, 0, 0, 0.2025, 0, 0.0501865, 0)
-mesh = SubResource("PrismMesh_6j4tc")
-skeleton = NodePath("../..")
+[node name="Mesh" parent="Tilt" instance=ExtResource("2_ay8cb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, 0)
+
+[node name="Prism" parent="Tilt/Mesh" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02, 0)
+surface_material_override/0 = ExtResource("3_qq2g6")
+
+[node name="Prism Ring" parent="Tilt/Mesh/Prism" index="0"]
+transform = Transform3D(0.433013, 0.25, 0.866025, -0.5, 0.866025, -1.49012e-08, -0.75, -0.433013, 0.5, 0, 0.163, 0)
+surface_material_override/0 = ExtResource("3_qq2g6")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0491965, 0)
@@ -36,4 +188,11 @@ aabb = AABB(-0.2, -0.2, -0.2, 0.4, 0.4, 0.4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 mesh = SubResource("BoxMesh_07ihf")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sv605")
+}
+
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_screen_exited"]
+
+[editable path="Tilt/Mesh"]
